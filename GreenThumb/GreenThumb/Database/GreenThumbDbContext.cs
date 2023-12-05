@@ -87,7 +87,8 @@ namespace GreenThumb.Database
                     InstructionId = 4,
                     Text = "Use well-draining soil",
                     PlantId = 2
-                }, new InstructionModel
+                }, 
+                new InstructionModel
                 {
                     InstructionId = 5,
                     Text = "Water rose",
