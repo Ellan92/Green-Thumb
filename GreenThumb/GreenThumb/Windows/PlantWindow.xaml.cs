@@ -1,18 +1,7 @@
 ﻿using GreenThumb.Database;
 using GreenThumb.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GreenThumb.Windows
 {
@@ -80,6 +69,7 @@ namespace GreenThumb.Windows
 
                     PlantDetailsWindow plantDetailsWindow = new(selectedPlant);
                     plantDetailsWindow.Show();
+                    Close();
 
                 }
                 else
@@ -95,6 +85,29 @@ namespace GreenThumb.Windows
             AddPlantWindow addPlantWindow = new();
             addPlantWindow.Show();
             Close();
+        }
+
+        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            using (GreenThumbDbContext context = new())
+            {
+
+
+                string searchText = txtSearch.Text.ToLower();
+
+                var filteredPlants = context.Plants.Where(p => p.Name.ToLower().Contains(searchText)).ToList();
+
+                lvPlants.Items.Clear();
+
+                foreach (var plant in filteredPlants)
+                {
+                    ListViewItem item = new();
+                    item.Tag = plant;
+                    item.Content = plant.Name;
+                    lvPlants.Items.Add(item);
+                }
+            }
+
         }
     }
 }

@@ -41,6 +41,15 @@
             HorizontalAlignment="Center"
             FontFamily="Segoe Print"
             Foreground="MintCream"/>
+        <Label
+            Grid.Row="2"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Content="Search"
+            FontSize="20"
+            FontFamily="Segoe Print"
+            Foreground="MintCream"
+            HorizontalAlignment="Center"/>
         <ListView
             Name="lvPlants"
             Grid.Row="3"
@@ -49,7 +58,8 @@
             Grid.ColumnSpan="2"
             Background="MintCream"
             FontFamily="Segoe Print"
-            FontSize="20"/>
+            FontSize="20"
+            Margin="8"/>
         <TextBox
             Name="txtSearch"
             Grid.Row="2"
@@ -58,25 +68,12 @@
             Height="35"
             Width="250"
             VerticalAlignment="Bottom"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Margin="0 10"
             VerticalContentAlignment="Center"
             HorizontalContentAlignment="Center"
             FontFamily="Segoe Print"
-            Background="MintCream"/>
-        <Button
-            Name="btnSearch"
-            Content="Search"
-            FontSize="20"
-            FontFamily="Segoe Print"
-            Grid.Row="2"
-            Grid.Column="3"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Bottom"
-            Width="100"
-            Height="35"
-            Margin="0 10"
-            Background="MintCream"/>
+            Background="MintCream" TextChanged="txtSearch_TextChanged"/>
         <Button
             Name="btnDetails"
             Content="Details"
