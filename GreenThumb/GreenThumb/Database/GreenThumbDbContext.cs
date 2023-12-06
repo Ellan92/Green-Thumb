@@ -87,14 +87,20 @@ namespace GreenThumb.Database
                     InstructionId = 4,
                     Text = "Use well-draining soil",
                     PlantId = 2
-                }, 
+                },
                 new InstructionModel
                 {
                     InstructionId = 5,
                     Text = "Water rose",
                     PlantId = 2
                 });
-
+            modelBuilder.Entity<UserModel>().HasData(
+                new UserModel
+                {
+                    UserId = 1,
+                    Username = "user",
+                    Password = "password"
+                });
 
         }
     }

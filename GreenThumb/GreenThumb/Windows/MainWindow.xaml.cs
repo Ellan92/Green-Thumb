@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GreenThumb.Managers;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GreenThumb.Windows
 {
@@ -23,9 +12,28 @@ namespace GreenThumb.Windows
         {
             InitializeComponent();
 
-            PlantWindow plantWindow = new PlantWindow();
-            plantWindow.Show();
-            Close();
+            //PlantWindow plantWindow = new PlantWindow();
+            //plantWindow.Show();
+            //Close();
+        }
+
+        private async void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+
+            bool isSuccessfulLogin = await UserManager.SigninUser(username, password);
+
+            if (isSuccessfulLogin)
+            {
+                PlantWindow plantWindow = new();
+                plantWindow.Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("User does not exist, please try again.");
+            }
         }
     }
 }

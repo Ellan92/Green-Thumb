@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FF086D00" Offset="1"/>
+                <GradientStop Color="#FF11FF00"/>
+            </RadialGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition/>
@@ -23,20 +30,107 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
+        <Image 
+            Grid.Column="2" 
+            Grid.ColumnSpan="2" 
+            Grid.RowSpan="3" 
+            Grid.Row="1" 
+            Source="/GreenThumb.png"/>
         <Label
-            Grid.Row="1"
+            Grid.Row="2"
             Grid.RowSpan="2"
             Grid.Column="2"
             Grid.ColumnSpan="2"
-            Content="Plant Window"
+            Content="Green Thumb"
             FontSize="50"
-            HorizontalAlignment="Center" FontFamily="Segoe Print"/>
-        <Button
-            Grid.Row="3"
+            HorizontalAlignment="Center" 
+            FontFamily="Segoe Print"
+            Foreground="MintCream"
+            Margin="0 -15 0 0"/>
+        <Label
+            Content="Username"
+            Grid.Row="2"
+            Grid.RowSpan="2"
             Grid.Column="2"
-            Content="PlantWindow"/>
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            FontFamily="Segoe Print"
+            FontSize="16"
+            Foreground="MintCream"/>
+        <Label
+            Content="Password"
+            Grid.Row="3"
+            Grid.Column="3"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            FontFamily="Segoe Print"
+            FontSize="16"
+            Foreground="MintCream"/>
+        <Label
+            Content="Not a member?"
+            Grid.Row="5"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            FontFamily="Segoe Print"
+            FontSize="16"
+            Foreground="MintCream"
+            Margin="0 -15"/>
+        <TextBox
+            Name="txtUsername"
+            Grid.Row="4"
+            Grid.Column="2"
+            Height="40"
+            Margin="10 0"
+            Background="MintCream"
+            VerticalAlignment="Top"
+            FontFamily="Segoe Print"
+            FontSize="16"/>
+        <TextBox
+            Name="txtPassword"
+            Grid.Row="4"
+            Grid.Column="3"
+            Height="40"
+            Margin="10 0"
+            Background="MintCream"
+            VerticalAlignment="Top"
+            FontFamily="Segoe Print"
+            FontSize="16"/>
+        <Button
+            Name="btnLogin"
+            Content="Log in"
+            Grid.Row="5"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Height="40"
+            Width="120"
+            Background="MintCream"
+            FontFamily="Segoe Print"
+            FontSize="20"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center" Click="btnLogin_Click"/>
+        <Button
+            Name="btnRegister"
+            Content="Register now!"
+            Grid.Row="6"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="2"
+            Height="50"
+            Width="240"
+            FontFamily="Segoe Print"
+            FontSize="30"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Background="Transparent"
+            Foreground="Lime"
+            FontWeight="Light"
+            BorderThickness="0"
+            Margin="0 0 0 0"/>
 
     </Grid>
 </Window>
