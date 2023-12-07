@@ -1,4 +1,5 @@
 ﻿using GreenThumb.Database;
+using GreenThumb.Managers;
 using GreenThumb.Models;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,6 +15,7 @@ namespace GreenThumb.Windows
         {
             InitializeComponent();
             UpdateUi();
+            DisplayUsername();
         }
         public async Task UpdateUi()
         {
@@ -91,11 +93,10 @@ namespace GreenThumb.Windows
         {
             using (GreenThumbDbContext context = new())
             {
-
-
                 string searchText = txtSearch.Text.ToLower();
 
                 var filteredPlants = context.Plants.Where(p => p.Name.ToLower().Contains(searchText)).ToList();
+                //var filteredPlants = context.Plants.Where(p => p.Name.StartsWith(searchText, StringComparison.OrdinalIgnoreCase)).ToList();
 
                 lvPlants.Items.Clear();
 
@@ -108,6 +109,18 @@ namespace GreenThumb.Windows
                 }
             }
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            UserManager.SignOutUser();
+            MainWindow mainWindow = new();
+            mainWindow.Show();
+            Close();
+        }
+        private void DisplayUsername()
+        {
+            lblUsername.Content = UserManager.signedInUser.Username;
         }
     }
 }

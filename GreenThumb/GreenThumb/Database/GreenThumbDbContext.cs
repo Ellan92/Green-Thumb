@@ -94,12 +94,13 @@ namespace GreenThumb.Database
                     Text = "Water rose",
                     PlantId = 2
                 });
+
             modelBuilder.Entity<UserModel>().HasData(
                 new UserModel
                 {
                     UserId = 1,
                     Username = "user",
-                    Password = "password"
+                    Password = "password",
                 });
 
         }

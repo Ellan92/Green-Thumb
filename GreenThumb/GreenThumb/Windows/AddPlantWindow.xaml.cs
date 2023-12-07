@@ -1,18 +1,6 @@
 ﻿using GreenThumb.Database;
 using GreenThumb.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GreenThumb.Windows
 {
@@ -33,36 +21,54 @@ namespace GreenThumb.Windows
         {
             using (GreenThumbDbContext context = new())
             {
-                if(!string.IsNullOrWhiteSpace(txtPlantName.Text) && !string.IsNullOrWhiteSpace(txtDescription.Text))
+                string plantName = txtPlantName.Text.ToLower();
+                string description = txtDescription.Text;
+
+                if (!string.IsNullOrWhiteSpace(txtPlantName.Text) && !string.IsNullOrWhiteSpace(txtDescription.Text))
                 {
                     GreenThumbUow uow = new(context);
 
+                    var allPlants = await uow.PlantRepository.GetAllAsync();
 
                     PlantModel newPlant = new()
                     {
-                        Name = txtPlantName.Text,
-                        Description = txtDescription.Text,
+                        Name = plantName,
+                        Description = description
                     };
 
-                    await uow.PlantRepository.Add(newPlant);
-                    await uow.Complete();
-
-                    foreach (string Instruction in Instructions)
+                    if (!allPlants.Any(p => p.Name.ToLower() == plantName))
                     {
-                        InstructionModel newInstruction = new()
+
+
+                        await uow.PlantRepository.Add(newPlant);
+                        await uow.Complete();
+
+                        foreach (string Instruction in Instructions)
                         {
-                            Text = Instruction,
-                            PlantId = newPlant.PlantId,
-                        };
+                            InstructionModel newInstruction = new()
+                            {
+                                Text = Instruction,
+                                PlantId = newPlant.PlantId,
+                            };
 
-                        //newPlant.Instructions.Add(newInstruction);
-                        await uow.InstructionRepository.Add(newInstruction);
+                            //newPlant.Instructions.Add(newInstruction);
+                            await uow.InstructionRepository.Add(newInstruction);
+                        }
+                        await uow.Complete();
+
+                        MessageBox.Show("Plant added!");
+
+                        ClearUi();
                     }
-                    await uow.Complete();
+                    else
+                    {
+                        MessageBox.Show("A plant with that name already exists, try again.");
+                    }
 
-                    MessageBox.Show("Plant added!");
-
-                    ClearUi();
+                }
+                else
+                {
+                    MessageBox.Show("Some of the fields are empty..");
                 }
             }
         }
@@ -80,7 +86,7 @@ namespace GreenThumb.Windows
 
                     lvInstructions.Items.Clear();
 
-                    foreach(string instruction in Instructions)
+                    foreach (string instruction in Instructions)
                     {
                         lvInstructions.Items.Add(instruction);
                     }
