@@ -5,8 +5,80 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GreenThumb.Windows"
         mc:Ignorable="d"
-        Title="MyGardenWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800">
     <Grid>
-        
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FF086D00" Offset="1"/>
+                <GradientStop Color="#FF11FF00"/>
+            </RadialGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Label
+            Grid.Row="1"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Content="My Garden"
+            FontSize="50"
+            HorizontalAlignment="Center"
+            FontFamily="Segoe Print"
+            Foreground="MintCream"/>
+        <ListView
+            Name="lvPlants"
+            Grid.Row="3"
+            Grid.Column="2"
+            Grid.RowSpan="3"
+            Grid.ColumnSpan="2"
+            Background="MintCream"
+            FontFamily="Segoe Print"
+            FontSize="20"
+            Margin="8"/>
+        <Button
+            Content="Go back"
+            Grid.Row="1"
+            Grid.Column="4"
+            Height="40"
+            Width="140"
+            FontFamily="Segoe Print"
+            Background="MintCream"
+            FontSize="20" Click="Button_Click"
+            VerticalAlignment="Bottom"/>
+        <Label
+            Grid.Row="2"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Content="Plants"
+            FontSize="20"
+            FontFamily="Segoe Print"
+            Foreground="MintCream"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"/>
+        <Label
+            Name="lblUsername"
+            Grid.Row="1"
+            Grid.Column="1"
+            Content="username"
+            FontSize="20"
+            FontFamily="Segoe Print"
+            Foreground="MintCream"
+            HorizontalAlignment="Center"/>
     </Grid>
 </Window>

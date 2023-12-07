@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GreenThumb.Managers;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GreenThumb.Windows
 {
@@ -22,6 +11,12 @@ namespace GreenThumb.Windows
         public MyGardenWindow()
         {
             InitializeComponent();
+            DisplayUsername();
+        }
+
+        private void DisplayUsername()
+        {
+            lblUsername.Content = UserManager.signedInUser.Username;
         }
     }
 }

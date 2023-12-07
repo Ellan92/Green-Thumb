@@ -12,7 +12,6 @@ namespace GreenThumb.Models
         public string Name { get; set; } = null!;
         public List<PlantGarden> PlantGardens { get; set; } = new();
         [ForeignKey(nameof(User))]
-
         public int UserId { get; set; }
         public UserModel? User { get; set; }
     }

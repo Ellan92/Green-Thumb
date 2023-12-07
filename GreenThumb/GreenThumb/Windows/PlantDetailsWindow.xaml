@@ -26,6 +26,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Label
@@ -38,7 +39,7 @@
             FontSize="48"
             FontFamily="Segoe Print"
             Foreground="MintCream"
-            Margin="20"/>
+            Margin="12"/>
         <TextBlock
             Name="txtDescription"
             Grid.Row="2"
@@ -90,6 +91,16 @@
             Background="MintCream"
             FontFamily="Segoe Print"
             FontSize="16" Click="Button_Click"/>
+        <Button
+            Content="Add to my garden"
+            Grid.Row="5"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Height="60"
+            Width="200"
+            Background="MintCream"
+            FontFamily="Segoe Print"
+            FontSize="16" Click="Button_Click_1"/>
 
     </Grid>
 </Window>

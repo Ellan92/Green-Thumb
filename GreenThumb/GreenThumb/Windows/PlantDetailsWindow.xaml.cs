@@ -51,5 +51,10 @@ namespace GreenThumb.Windows
             plantWindow.Show();
             Close();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
