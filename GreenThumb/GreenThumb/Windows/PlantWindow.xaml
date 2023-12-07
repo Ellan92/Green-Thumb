@@ -133,7 +133,8 @@
             Width="140"
             FontFamily="Segoe Print"
             Background="MintCream"
-            FontSize="20" Click="Button_Click"
+            FontSize="20" 
+            Click="Button_Click"
             VerticalAlignment="Bottom"/>
         <Button
             Content="My Garden"
@@ -143,7 +144,8 @@
             Width="140"
             FontFamily="Segoe Print"
             Background="MintCream"
-            FontSize="20" Click="Button_Click"
+            FontSize="20" 
+            Click="mygarden_Button_Click"
             VerticalAlignment="Bottom"/>
 
     </Grid>

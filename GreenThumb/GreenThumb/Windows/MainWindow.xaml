@@ -90,7 +90,7 @@
             VerticalAlignment="Top"
             FontFamily="Segoe Print"
             FontSize="16"/>
-        <TextBox
+        <PasswordBox
             Name="txtPassword"
             Grid.Row="4"
             Grid.Column="3"

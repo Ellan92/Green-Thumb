@@ -122,5 +122,12 @@ namespace GreenThumb.Windows
         {
             lblUsername.Content = UserManager.signedInUser.Username;
         }
+
+        private void mygarden_Button_Click(object sender, RoutedEventArgs e)
+        {
+            MyGardenWindow myGardenWindow = new();
+            myGardenWindow.Show();
+            Close();
+        }
     }
 }

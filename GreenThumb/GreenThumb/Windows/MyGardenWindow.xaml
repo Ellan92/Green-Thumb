@@ -59,7 +59,8 @@
             Width="140"
             FontFamily="Segoe Print"
             Background="MintCream"
-            FontSize="20" Click="Button_Click"
+            FontSize="20" 
+            Click="Button_Click"
             VerticalAlignment="Bottom"/>
         <Label
             Grid.Row="2"

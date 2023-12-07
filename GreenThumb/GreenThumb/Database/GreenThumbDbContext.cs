@@ -28,6 +28,8 @@ namespace GreenThumb.Database
                 .WithOne(p => p.Plant)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<PlantGarden>().HasKey(p => new { p.PlantId, p.GardenId });
+
             modelBuilder.Entity<PlantGarden>()
                 .HasKey(pg => new { pg.PlantId, pg.GardenId });
 
@@ -101,6 +103,13 @@ namespace GreenThumb.Database
                     UserId = 1,
                     Username = "user",
                     Password = "password",
+                    GardenId = 1
+                });
+            modelBuilder.Entity<GardenModel>().HasData(
+                new GardenModel
+                {
+                    GardenId = 1,
+                    Name = "usergarden",
                 });
 
         }

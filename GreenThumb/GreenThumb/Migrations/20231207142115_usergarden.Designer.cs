@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GreenThumb.Migrations
 {
     [DbContext(typeof(GreenThumbDbContext))]
-    [Migration("20231206125440_Initial")]
-    partial class Initial
+    [Migration("20231207142115_usergarden")]
+    partial class usergarden
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,14 +38,16 @@ namespace GreenThumb.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("name");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("GardenId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Gardens");
+
+                    b.HasData(
+                        new
+                        {
+                            GardenId = 1,
+                            Name = "usergarden"
+                        });
                 });
 
             modelBuilder.Entity("GreenThumb.Models.InstructionModel", b =>
@@ -200,7 +202,9 @@ namespace GreenThumb.Migrations
 
                     b.HasKey("UserId");
 
-                    b.HasIndex("GardenId");
+                    b.HasIndex("GardenId")
+                        .IsUnique()
+                        .HasFilter("[garden_id] IS NOT NULL");
 
                     b.ToTable("Users");
 
@@ -208,20 +212,10 @@ namespace GreenThumb.Migrations
                         new
                         {
                             UserId = 1,
+                            GardenId = 1,
                             Password = "password",
                             Username = "user"
                         });
-                });
-
-            modelBuilder.Entity("GreenThumb.Models.GardenModel", b =>
-                {
-                    b.HasOne("GreenThumb.Models.UserModel", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("GreenThumb.Models.InstructionModel", b =>
@@ -257,8 +251,8 @@ namespace GreenThumb.Migrations
             modelBuilder.Entity("GreenThumb.Models.UserModel", b =>
                 {
                     b.HasOne("GreenThumb.Models.GardenModel", "Garden")
-                        .WithMany()
-                        .HasForeignKey("GardenId");
+                        .WithOne("User")
+                        .HasForeignKey("GreenThumb.Models.UserModel", "GardenId");
 
                     b.Navigation("Garden");
                 });
@@ -266,6 +260,8 @@ namespace GreenThumb.Migrations
             modelBuilder.Entity("GreenThumb.Models.GardenModel", b =>
                 {
                     b.Navigation("PlantGardens");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("GreenThumb.Models.PlantModel", b =>
