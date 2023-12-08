@@ -16,12 +16,11 @@ namespace GreenThumb.Windows
 
 
         }
-
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private async void btnAdd(object sender, RoutedEventArgs e)
         {
             using (GreenThumbDbContext context = new())
             {
-                string plantName = txtPlantName.Text.ToLower();
+                string plantName = txtPlantName.Text;
                 string description = txtDescription.Text;
 
                 if (!string.IsNullOrWhiteSpace(txtPlantName.Text) && !string.IsNullOrWhiteSpace(txtDescription.Text))
@@ -36,7 +35,7 @@ namespace GreenThumb.Windows
                         Description = description
                     };
 
-                    if (!allPlants.Any(p => p.Name.ToLower() == plantName))
+                    if (!allPlants.Any(p => p.Name.ToLower() == plantName.ToLower()))
                     {
 
 

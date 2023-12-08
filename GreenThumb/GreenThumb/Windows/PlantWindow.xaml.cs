@@ -120,7 +120,7 @@ namespace GreenThumb.Windows
         }
         private void DisplayUsername()
         {
-            lblUsername.Content = UserManager.signedInUser.Username;
+            lblUsername.Content = UserManager.signedInUser?.Username;
         }
 
         private void mygarden_Button_Click(object sender, RoutedEventArgs e)

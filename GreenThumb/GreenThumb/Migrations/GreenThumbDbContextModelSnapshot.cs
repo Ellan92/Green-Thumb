@@ -77,31 +77,91 @@ namespace GreenThumb.Migrations
                         {
                             InstructionId = 1,
                             PlantId = 1,
-                            Text = "Ensure correct lighting"
+                            Text = "Ensure correct lighting."
                         },
                         new
                         {
                             InstructionId = 2,
                             PlantId = 1,
-                            Text = "Water cactus"
+                            Text = "Water cactus."
                         },
                         new
                         {
                             InstructionId = 3,
                             PlantId = 2,
-                            Text = "Ensure correct lighting"
+                            Text = "Ensure correct lighting."
                         },
                         new
                         {
                             InstructionId = 4,
                             PlantId = 2,
-                            Text = "Use well-draining soil"
+                            Text = "Use well-draining soil."
                         },
                         new
                         {
                             InstructionId = 5,
                             PlantId = 2,
-                            Text = "Water rose"
+                            Text = "Water rose."
+                        },
+                        new
+                        {
+                            InstructionId = 6,
+                            PlantId = 3,
+                            Text = "Use well-draining soil."
+                        },
+                        new
+                        {
+                            InstructionId = 7,
+                            PlantId = 3,
+                            Text = "Plant in a sunny location."
+                        },
+                        new
+                        {
+                            InstructionId = 8,
+                            PlantId = 3,
+                            Text = "Water Sunflower."
+                        },
+                        new
+                        {
+                            InstructionId = 9,
+                            PlantId = 4,
+                            Text = "Plant in a bright location."
+                        },
+                        new
+                        {
+                            InstructionId = 10,
+                            PlantId = 4,
+                            Text = "Avoid placing in direct sunlight for extended periods of time."
+                        },
+                        new
+                        {
+                            InstructionId = 11,
+                            PlantId = 4,
+                            Text = "Ensure a tempereature between 60 - 80 degrees Fahrenheit (15 - 27 degrees celsius) during the day, and slightly cooler during night-time."
+                        },
+                        new
+                        {
+                            InstructionId = 12,
+                            PlantId = 4,
+                            Text = "Water Orchid, but allow the top inch of the potting mix to dry before watering again'."
+                        },
+                        new
+                        {
+                            InstructionId = 13,
+                            PlantId = 5,
+                            Text = "Plant Maple Tree."
+                        },
+                        new
+                        {
+                            InstructionId = 14,
+                            PlantId = 5,
+                            Text = "Apply a layer of organic mulch, such as wood chips or bark, around the base of the tree."
+                        },
+                        new
+                        {
+                            InstructionId = 15,
+                            PlantId = 5,
+                            Text = "Water Maple Tree. Consistent moisture and deep watering is crucial here. Aim for deep penetration rather than shallow watering."
                         });
                 });
 
@@ -146,7 +206,7 @@ namespace GreenThumb.Migrations
                         new
                         {
                             PlantId = 1,
-                            Description = "Resilient succulent plants adapted to arid climates, are known for their unique appearance featuring fleshy stems and spines",
+                            Description = "Resilient succulent plants adapted to arid climates, are known for their unique appearance featuring fleshy stems and spines.",
                             Name = "Cactus"
                         },
                         new
@@ -211,7 +271,7 @@ namespace GreenThumb.Migrations
                         {
                             UserId = 1,
                             GardenId = 1,
-                            Password = "password",
+                            Password = "BETzSRAPc3/w6srQ6jx5bw==",
                             Username = "user"
                         });
                 });

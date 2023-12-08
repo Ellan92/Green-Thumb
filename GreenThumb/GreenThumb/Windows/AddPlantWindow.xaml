@@ -148,7 +148,7 @@
             FontSize="20"
             FontFamily="Segoe Print"
             Foreground="Black"
-            Background="MintCream" Click="Button_Click"/>
+            Background="MintCream" Click="btnAdd"/>
         <Button
             Name="btnGoBack"
             Grid.Row="1"
@@ -168,7 +168,7 @@
             Grid.RowSpan="3"
             Grid.ColumnSpan="2"
             Margin="10 50 10 10"
-            FontSize="20"
+            FontSize="14"
             FontFamily="Segoe Print"/>
     </Grid>
 </Window>

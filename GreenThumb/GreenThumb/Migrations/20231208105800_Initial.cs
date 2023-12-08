@@ -109,7 +109,7 @@ namespace GreenThumb.Migrations
                 columns: new[] { "id", "description", "name" },
                 values: new object[,]
                 {
-                    { 1, "Resilient succulent plants adapted to arid climates, are known for their unique appearance featuring fleshy stems and spines", "Cactus" },
+                    { 1, "Resilient succulent plants adapted to arid climates, are known for their unique appearance featuring fleshy stems and spines.", "Cactus" },
                     { 2, "Renowned for its exquisite flowers and fragrant aroma, the rose is a symbol of love and beauty, cultivated in various colors and varieties worldwide.", "Rose" },
                     { 3, "Recognizable for its large, yellow flower head, the sunflower is not only visually striking but also known for its heliotropic behavior, following the sun's movement.", "Sunflower" },
                     { 4, "Boasting a vast and diverse family, orchids are prized for their intricate and exotic blooms, making them popular choices in the world of ornamental plants and horticulture.", "Orchid" },
@@ -117,21 +117,31 @@ namespace GreenThumb.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "id", "garden_id", "password", "username" },
-                values: new object[] { 1, null, "password", "user" });
-
-            migrationBuilder.InsertData(
                 table: "Instructions",
                 columns: new[] { "id", "plant_id", "text" },
                 values: new object[,]
                 {
-                    { 1, 1, "Ensure correct lighting" },
-                    { 2, 1, "Water cactus" },
-                    { 3, 2, "Ensure correct lighting" },
-                    { 4, 2, "Use well-draining soil" },
-                    { 5, 2, "Water rose" }
+                    { 1, 1, "Ensure correct lighting." },
+                    { 2, 1, "Water cactus." },
+                    { 3, 2, "Ensure correct lighting." },
+                    { 4, 2, "Use well-draining soil." },
+                    { 5, 2, "Water rose." },
+                    { 6, 3, "Use well-draining soil." },
+                    { 7, 3, "Plant in a sunny location." },
+                    { 8, 3, "Water Sunflower." },
+                    { 9, 4, "Plant in a bright location." },
+                    { 10, 4, "Avoid placing in direct sunlight for extended periods of time." },
+                    { 11, 4, "Ensure a tempereature between 60 - 80 degrees Fahrenheit (15 - 27 degrees celsius) during the day, and slightly cooler during night-time." },
+                    { 12, 4, "Water Orchid, but allow the top inch of the potting mix to dry before watering again'." },
+                    { 13, 5, "Plant Maple Tree." },
+                    { 14, 5, "Apply a layer of organic mulch, such as wood chips or bark, around the base of the tree." },
+                    { 15, 5, "Water Maple Tree. Consistent moisture and deep watering is crucial here. Aim for deep penetration rather than shallow watering." }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "id", "garden_id", "password", "username" },
+                values: new object[] { 1, 1, "BETzSRAPc3/w6srQ6jx5bw==", "user" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Instructions_plant_id",

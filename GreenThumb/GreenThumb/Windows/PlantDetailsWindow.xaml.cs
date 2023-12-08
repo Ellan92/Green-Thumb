@@ -21,8 +21,6 @@ namespace GreenThumb.Windows
 
             plantId = plant.PlantId;
 
-
-
             lblPlantName.Content = plant.Name;
             txtDescription.Text = plant.Description;
 
@@ -64,20 +62,27 @@ namespace GreenThumb.Windows
             {
                 GreenThumbUow uow = new(context);
 
-                int gardenId = UserManager.signedInUser.GardenId ?? 0;
-
-                PlantGarden userPlantGarden = new()
+                try
                 {
-                    PlantId = currentplant.PlantId,
-                    GardenId = gardenId
-                };
+                    int gardenId = UserManager.signedInUser.GardenId ?? 0;
 
-                await uow.PlantGardenRepository.Add(userPlantGarden);
-                await uow.Complete();
+                    PlantGarden userPlantGarden = new()
+                    {
+                        PlantId = currentplant.PlantId,
+                        GardenId = gardenId
+                    };
 
-                PlantWindow plantWindow = new();
-                plantWindow.Show();
-                Close();
+                    await uow.PlantGardenRepository.Add(userPlantGarden);
+                    await uow.Complete();
+
+                    PlantWindow plantWindow = new();
+                    plantWindow.Show();
+                    Close();
+                }
+                catch
+                {
+                    MessageBox.Show("That plant is already in your garden.");
+                }
 
             }
         }

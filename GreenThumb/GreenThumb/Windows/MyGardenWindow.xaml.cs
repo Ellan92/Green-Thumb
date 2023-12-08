@@ -16,13 +16,13 @@ namespace GreenThumb.Windows
             InitializeComponent();
             DisplayUsername();
 
-            using(GreenThumbDbContext context = new())
+            using (GreenThumbDbContext context = new())
             {
                 GreenThumbUow uow = new(context);
 
                 var filteredPlants = context.PlantGardens.Where(p => p.GardenId == UserManager.signedInUser.GardenId).Include(p => p.Plant).ToList();
 
-                foreach(var plant in filteredPlants)
+                foreach (var plant in filteredPlants)
                 {
                     ListViewItem item = new();
                     item.Tag = plant;
@@ -31,7 +31,7 @@ namespace GreenThumb.Windows
                     lvPlants.Items.Add(item);
                 }
 
-                    //var filteredPlants = context.Plants.Where(p => p.Name.ToLower().Contains(searchText)).ToList();
+                //var filteredPlants = context.Plants.Where(p => p.Name.ToLower().Contains(searchText)).ToList();
             }
         }
 

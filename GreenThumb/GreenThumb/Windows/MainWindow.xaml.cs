@@ -35,5 +35,12 @@ namespace GreenThumb.Windows
                 MessageBox.Show("User does not exist, please try again.");
             }
         }
+
+        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterWindow registerWindow = new();
+            registerWindow.Show();
+            Close();
+        }
     }
 }
