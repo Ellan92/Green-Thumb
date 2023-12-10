@@ -37,27 +37,57 @@ namespace GreenThumb.Windows
 
                     if (!allPlants.Any(p => p.Name.ToLower() == plantName.ToLower()))
                     {
-
-
-                        await uow.PlantRepository.Add(newPlant);
-                        await uow.Complete();
-
-                        foreach (string Instruction in Instructions)
+                        
+                        if (lvInstructions.Items.Count == 0)
                         {
-                            InstructionModel newInstruction = new()
+                            MessageBoxResult messageBoxResult = MessageBox.Show("You haven't added any instructions to this plant, do you still want to save it?", "Confirmation", MessageBoxButton.YesNo);
+
+                            if (messageBoxResult == MessageBoxResult.Yes)
                             {
-                                Text = Instruction,
-                                PlantId = newPlant.PlantId,
-                            };
+                                await uow.PlantRepository.Add(newPlant);
+                                await uow.Complete();
 
-                            //newPlant.Instructions.Add(newInstruction);
-                            await uow.InstructionRepository.Add(newInstruction);
+                                foreach (string Instruction in Instructions)
+                                {
+                                    InstructionModel newInstruction = new()
+                                    {
+                                        Text = Instruction,
+                                        PlantId = newPlant.PlantId,
+                                    };
+
+                                    //newPlant.Instructions.Add(newInstruction);
+                                    await uow.InstructionRepository.Add(newInstruction);
+                                }
+                                await uow.Complete();
+
+                                MessageBox.Show("Plant added!");
+
+                                ClearUi();
+                            }
                         }
-                        await uow.Complete();
+                        else
+                        {
+                            await uow.PlantRepository.Add(newPlant);
+                            await uow.Complete();
 
-                        MessageBox.Show("Plant added!");
+                            foreach (string Instruction in Instructions)
+                            {
+                                InstructionModel newInstruction = new()
+                                {
+                                    Text = Instruction,
+                                    PlantId = newPlant.PlantId,
+                                };
 
-                        ClearUi();
+                                //newPlant.Instructions.Add(newInstruction);
+                                await uow.InstructionRepository.Add(newInstruction);
+                            }
+                            await uow.Complete();
+
+                            MessageBox.Show("Plant added!");
+
+                            ClearUi();
+                        }
+
                     }
                     else
                     {
