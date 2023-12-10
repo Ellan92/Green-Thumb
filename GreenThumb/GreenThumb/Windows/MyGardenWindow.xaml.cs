@@ -30,8 +30,6 @@ namespace GreenThumb.Windows
 
                     lvPlants.Items.Add(item);
                 }
-
-                //var filteredPlants = context.Plants.Where(p => p.Name.ToLower().Contains(searchText)).ToList();
             }
         }
 
